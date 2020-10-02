@@ -3,20 +3,38 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import {DashboardResolve} from "./dashboard/dashboard.resolve";
+import {DeviceComponent} from "./device/device.component";
+import {DeviceResolve} from "./device/device.resolve";
+import {PageMenuResolve} from "./page-menu.resolve";
+
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
+  resolve: {
+    userProfile: PageMenuResolve,
+  },
   children: [
     {
       path: 'dashboard',
-      component: ECommerceComponent,
+      component: DashboardComponent,
+      resolve: {
+        dashboardData: DashboardResolve,
+      }
     },
     {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
+      path: 'device',
+      component: DeviceComponent,
+      resolve: {
+        deviceData: DeviceResolve,
+      }
+    },
+    {
+      path: 'approval',
+      loadChildren: () => import('./approval/approval.module')
+        .then(m => m.ApprovalModule)
     },
     {
       path: 'layout',

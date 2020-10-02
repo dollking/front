@@ -1,0 +1,50 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+
+  <nb-card-body>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <nb-card>
+          <nb-card-header>Datepicker With Disabled Min Max Values</nb-card-header>
+          <nb-card-body>
+            <input nbInput placeholder="Min Max Picker" [nbDatepicker]="picker1" [(ngModel)]="startDate">
+            <nb-datepicker #picker1 [min]="min" [max]="max"></nb-datepicker>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-lg-6">
+        <nb-card>
+          <nb-card-header>Datepicker With Disabled Min Max Values</nb-card-header>
+          <nb-card-body>
+            <input nbInput placeholder="Min Max Picker" [nbDatepicker]="picker2"[(ngModel)]="endDate">
+            <nb-datepicker #picker2 [min]="min" [max]="max"></nb-datepicker>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="label" style="margin-right: 5px">장비(컴퓨터)</label>
+          <nb-select [(selected)]="status">
+            <nb-option *ngFor="let t of computerList" [value]="t">{{ t }}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <label class="label" for="reason" >요청 사유</label>
+        <textarea rows="5" nbInput fullWidth shape="semi-round" id="reason" [(ngModel)]="text"></textarea>
+      </div>
+    </div>
+
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button nbButton hero status="primary" (click)="dismiss()">Close</button>
+    <button nbButton hero status="primary" (click)="requestApproval()" style="float: right; margin-left: 4px;">요청</button>
+  </nb-card-footer>
+</nb-card>

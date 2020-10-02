@@ -12,17 +12,26 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
-  NbChatModule,
+  NbAlertModule, NbButtonModule,
+  NbChatModule, NbCheckboxModule,
   NbDatepickerModule,
-  NbDialogModule,
+  NbDialogModule, NbInputModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import {NgxLoginComponent} from "./auth/login.component";
+import {FormsModule} from "@angular/forms";
+import {NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy, NbTokenStorage} from "@nebular/auth";
+import {PageMenuResolve} from "./pages/page-menu.resolve";
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    NgxLoginComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,8 +48,47 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    FormsModule,
+    NbAlertModule,
+    NbInputModule,
+    NbButtonModule,
+    NbCheckboxModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'auth',
+          baseEndpoint: 'http://203.246.113.171:8000',
+          token: {
+            class: NbAuthJWTToken,
+            key: 'token',
+          },
+          refreshToken: {
+            endpoint: 'refresh_token',
+            method: 'get',
+          },
+          login: {
+            endpoint: '/api-token-auth/',
+            method: 'post'
+          }
+        }),
+      ],
+      forms: {
+        login: {
+          redirectDelay: 300,
+          showMessages: {
+            success: true,
+          },
+          strategy: 'auth',
+        },
+      },
+    }),
   ],
-  bootstrap: [AppComponent],
+  providers: [
+    PageMenuResolve,
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {
 }

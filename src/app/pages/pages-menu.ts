@@ -1,20 +1,33 @@
 import { NbMenuItem } from '@nebular/theme';
+import {NbTokenStorage} from "@nebular/auth";
+
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'E-commerce',
-    icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
+    title: 'Dashboard',
+    icon: 'home-outline',
+    link: '/employee/dashboard',
     home: true,
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
+    title: '장비',
+    icon: 'hard-drive-outline',
+    link: '/employee/device',
   },
   {
-    title: 'FEATURES',
-    group: true,
+    title: '결재',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: '신청/확인',
+        link: '/employee/approval/status',
+      },
+      {
+        title: '결재',
+        link: '/employee/approval/approval',
+        hidden: true,
+      },
+    ],
   },
   {
     title: 'Layout',
@@ -22,24 +35,24 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Stepper',
-        link: '/pages/layout/stepper',
+        link: '/employee/layout/stepper',
       },
       {
         title: 'List',
-        link: '/pages/layout/list',
+        link: '/employee/layout/list',
       },
       {
         title: 'Infinite List',
-        link: '/pages/layout/infinite-list',
+        link: '/employee/layout/infinite-list',
       },
       {
         title: 'Accordion',
-        link: '/pages/layout/accordion',
+        link: '/employee/layout/accordion',
       },
       {
         title: 'Tabs',
         pathMatch: 'prefix',
-        link: '/pages/layout/tabs',
+        link: '/employee/layout/tabs',
       },
     ],
   },
@@ -49,42 +62,42 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Form Inputs',
-        link: '/pages/forms/inputs',
+        link: '/employee/forms/inputs',
       },
       {
         title: 'Form Layouts',
-        link: '/pages/forms/layouts',
+        link: '/employee/forms/layouts',
       },
       {
         title: 'Buttons',
-        link: '/pages/forms/buttons',
+        link: '/employee/forms/buttons',
       },
       {
         title: 'Datepicker',
-        link: '/pages/forms/datepicker',
+        link: '/employee/forms/datepicker',
       },
     ],
   },
   {
     title: 'UI Features',
     icon: 'keypad-outline',
-    link: '/pages/ui-features',
+    link: '/employee/ui-features',
     children: [
       {
         title: 'Grid',
-        link: '/pages/ui-features/grid',
+        link: '/employee/ui-features/grid',
       },
       {
         title: 'Icons',
-        link: '/pages/ui-features/icons',
+        link: '/employee/ui-features/icons',
       },
       {
         title: 'Typography',
-        link: '/pages/ui-features/typography',
+        link: '/employee/ui-features/typography',
       },
       {
         title: 'Animated Searches',
-        link: '/pages/ui-features/search-fields',
+        link: '/employee/ui-features/search-fields',
       },
     ],
   },
@@ -94,23 +107,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Dialog',
-        link: '/pages/modal-overlays/dialog',
+        link: '/employee/modal-overlays/dialog',
       },
       {
         title: 'Window',
-        link: '/pages/modal-overlays/window',
+        link: '/employee/modal-overlays/window',
       },
       {
         title: 'Popover',
-        link: '/pages/modal-overlays/popover',
+        link: '/employee/modal-overlays/popover',
       },
       {
         title: 'Toastr',
-        link: '/pages/modal-overlays/toastr',
+        link: '/employee/modal-overlays/toastr',
       },
       {
         title: 'Tooltip',
-        link: '/pages/modal-overlays/tooltip',
+        link: '/employee/modal-overlays/tooltip',
       },
     ],
   },
@@ -120,27 +133,27 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Calendar',
-        link: '/pages/extra-components/calendar',
+        link: '/employee/extra-components/calendar',
       },
       {
         title: 'Progress Bar',
-        link: '/pages/extra-components/progress-bar',
+        link: '/employee/extra-components/progress-bar',
       },
       {
         title: 'Spinner',
-        link: '/pages/extra-components/spinner',
+        link: '/employee/extra-components/spinner',
       },
       {
         title: 'Alert',
-        link: '/pages/extra-components/alert',
+        link: '/employee/extra-components/alert',
       },
       {
         title: 'Calendar Kit',
-        link: '/pages/extra-components/calendar-kit',
+        link: '/employee/extra-components/calendar-kit',
       },
       {
         title: 'Chat',
-        link: '/pages/extra-components/chat',
+        link: '/employee/extra-components/chat',
       },
     ],
   },
@@ -150,19 +163,19 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Google Maps',
-        link: '/pages/maps/gmaps',
+        link: '/employee/maps/gmaps',
       },
       {
         title: 'Leaflet Maps',
-        link: '/pages/maps/leaflet',
+        link: '/employee/maps/leaflet',
       },
       {
         title: 'Bubble Maps',
-        link: '/pages/maps/bubble',
+        link: '/employee/maps/bubble',
       },
       {
         title: 'Search Maps',
-        link: '/pages/maps/searchmap',
+        link: '/employee/maps/searchmap',
       },
     ],
   },
@@ -172,15 +185,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Echarts',
-        link: '/pages/charts/echarts',
+        link: '/employee/charts/echarts',
       },
       {
         title: 'Charts.js',
-        link: '/pages/charts/chartjs',
+        link: '/employee/charts/chartjs',
       },
       {
         title: 'D3',
-        link: '/pages/charts/d3',
+        link: '/employee/charts/d3',
       },
     ],
   },
@@ -190,11 +203,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'TinyMCE',
-        link: '/pages/editors/tinymce',
+        link: '/employee/editors/tinymce',
       },
       {
         title: 'CKEditor',
-        link: '/pages/editors/ckeditor',
+        link: '/employee/editors/ckeditor',
       },
     ],
   },
@@ -204,11 +217,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Smart Table',
-        link: '/pages/tables/smart-table',
+        link: '/employee/tables/smart-table',
       },
       {
         title: 'Tree Grid',
-        link: '/pages/tables/tree-grid',
+        link: '/employee/tables/tree-grid',
       },
     ],
   },
@@ -218,7 +231,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '404',
-        link: '/pages/miscellaneous/404',
+        link: '/employee/miscellaneous/404',
       },
     ],
   },

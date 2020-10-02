@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>
+    신청 목록
+  </nb-card-header>
+
+  <nb-card-body>
+    <button nbButton hero status="primary" (click)="showAddApproval($event)" style="float: right">신청</button>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="showApprovalStatus($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

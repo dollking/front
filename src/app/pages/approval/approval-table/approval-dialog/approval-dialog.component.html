@@ -1,0 +1,44 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="label">신청인</label>
+          <p>{{ data['requester_name'] }}</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="label">물품 관리명</label>
+          <p>{{ data['management_name'] }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="label">신청 기간</label>
+          <p>{{ data['start_date'] }} ~ {{ data['end_date'] }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="label">사유</label>
+          <p>{{ data['text'] }}</p>
+        </div>
+      </div>
+    </div>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="info" (click)="dismiss()">Close</button>
+    <button nbButton hero status="primary" (click)="setApproval(true)" style="float: right; margin-left: 4px;">승인</button>
+    <button nbButton hero status="warning" (click)="setApproval(false)" style="float: right">반려</button>
+  </nb-card-footer>
+</nb-card>
