@@ -16,8 +16,6 @@ export class ApprovalDialogComponent implements OnInit {
   @Input() data: GetApprovalInterface;
 
 
-  source: LocalDataSource = new LocalDataSource();
-
   constructor(protected ref: NbDialogRef<ApprovalDialogComponent>,
               private apiCall: ApiService) {
   }

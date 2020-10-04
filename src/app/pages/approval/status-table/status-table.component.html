@@ -4,7 +4,7 @@
   </nb-card-header>
 
   <nb-card-body>
-    <button nbButton hero status="primary" (click)="showAddApproval($event)" style="float: right">신청</button>
+    <button nbButton hero status="primary" (click)="showAddApproval($event)" style="float: right; margin-bottom: 4px">신청</button>
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="showApprovalStatus($event)">
     </ng2-smart-table>
   </nb-card-body>

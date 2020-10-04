@@ -6,6 +6,8 @@ import {ApprovalTableComponent} from "./approval-table/approval-table.component"
 import {StatusTableComponent} from "./status-table/status-table.component";
 import {ApprovalStatusResolve} from "./status-table/approval-status.resolve";
 import {ApprovalResolve} from "./approval-table/approval.resolve";
+import {SettingApproverComponent} from "./setting-approver/setting-approver.component";
+import {SettingApproverResolve} from "./setting-approver/setting-approver.resolve";
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +25,13 @@ const routes: Routes = [{
       component: ApprovalTableComponent,
       resolve: {
         approvalData: ApprovalResolve,
+      }
+    },
+    {
+      path: 'approver',
+      component: SettingApproverComponent,
+      resolve: {
+        approverData: SettingApproverResolve,
       }
     },
   ],

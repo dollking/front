@@ -6,18 +6,19 @@ import {Observable} from "rxjs";
 
 import 'rxjs/add/operator/map'
 
-export interface GetUserProfileInterface {
+export interface getUserAuthorityInterface {
+  is_superuser: boolean,
   is_head: boolean,
   is_approver: boolean,
 }
 
 
 @Injectable()
-export class PageMenuResolve implements Resolve<GetUserProfileInterface> {
+export class PageMenuResolve implements Resolve<getUserAuthorityInterface> {
   constructor(private apiCall: ApiService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GetUserProfileInterface> | Promise<GetUserProfileInterface> | GetUserProfileInterface {
-    return this.apiCall.getUserProfile();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<getUserAuthorityInterface> | Promise<getUserAuthorityInterface> | getUserAuthorityInterface {
+    return this.apiCall.getUserAuthority();
     };
 }

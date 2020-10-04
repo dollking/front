@@ -1,0 +1,25 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="label" style="margin-right: 5px">결재자</label>
+          <nb-select [(selected)]="status" style="vertical-align: middle; width: 20rem">
+            <nb-option *ngFor="let t of data" [value]="t">{{ t.first_name }}({{ t.username }})
+              - {{ t.user_profile.department.name }}</nb-option>
+          </nb-select>
+          <button nbButton hero status="info" (click)="onAddConfirm()" style="margin-left: 5px; vertical-align: middle">추가</button>
+        </div>
+      </div>
+    </div>
+
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"> </ng2-smart-table>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="info" (click)="dismiss()">Close</button>
+    <button nbButton hero status="primary" (click)="setApprover()" style="float: right; margin-left: 4px;">승인</button>
+  </nb-card-footer>
+</nb-card>

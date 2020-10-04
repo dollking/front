@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
-import {NbAuthService, NbLoginComponent} from '@nebular/auth';
-import {Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {NbLoginComponent, NbTokenStorage} from '@nebular/auth';
+
 
 @Component({
   selector: 'ngx-username-login',
@@ -8,4 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class NgxLoginComponent extends NbLoginComponent {
+
+  ngOnInit() {
+
+  }
 }

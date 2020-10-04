@@ -18,6 +18,9 @@ import {ApprovalDialogComponent} from "./approval-table/approval-dialog/approval
 import {FormsModule} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
 import {AddApprovalDialogComponent} from "./status-table/add-approval-dialog/add-approval-dialog.component";
+import {SettingApproverComponent} from "./setting-approver/setting-approver.component";
+import {SettingApproverResolve} from "./setting-approver/setting-approver.resolve";
+import {ApproverDialogComponent} from "./setting-approver/approver-dialog/approver-dialog.component";
 
 
 @NgModule({
@@ -39,11 +42,14 @@ import {AddApprovalDialogComponent} from "./status-table/add-approval-dialog/add
     StatusDialogComponent,
     ApprovalDialogComponent,
     AddApprovalDialogComponent,
+    SettingApproverComponent,
+    ApproverDialogComponent,
   ],
   providers: [
     ApiService,
     ApprovalStatusResolve,
     ApprovalResolve,
+    SettingApproverResolve,
   ],
 })
 export class ApprovalModule { }

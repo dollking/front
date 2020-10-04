@@ -128,9 +128,11 @@ export class StatusTableComponent {
           status: computerList[0],
         },
       }).onClose.subscribe(addedData => {
-        addedData['status'] = '대기';
-        this.source.add(addedData);
-        this.source.refresh();
+        if (addedData) {
+          addedData['status'] = '대기';
+          this.source.add(addedData);
+          this.source.refresh();
+        }
       });
     }, error => {
 
